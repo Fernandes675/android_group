@@ -1,0 +1,3 @@
+export const supaUrl = 'https://kojrlznsbgmmykpyvaxy.supabase.co';
+
+export const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtvanJsem5zYmdtbXlrcHl2YXh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4MjIyMDEsImV4cCI6MjA1OTM5ODIwMX0.tWlm8AkHIWBz4aeJA_oRKqiZILGDOIIY98k1m3FiIAo';
