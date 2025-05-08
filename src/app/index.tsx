@@ -1,7 +1,7 @@
 import { View, StyleSheet, Image, TextInput, Pressable, Text, ScrollView, Alert } from 'react-native';
 import colors from '@/constants/colors';
 import { Link } from 'expo-router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // ⬅️ useEffect adicionado aqui
 import { supabase } from '../lib/supabase';
 import { router } from 'expo-router'
 
@@ -10,6 +10,22 @@ export default function Login() {
     const [email, setEmail] = useState ('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
+
+    // ⬇️ INSERÇÃO PARA VERIFICAR CONEXÃO COM SUPABASE
+    useEffect(() => {
+        const checkConnection = async () => {
+            try {
+                const response = await fetch('1231231.com', { method: 'HEAD' });
+                if (!response.ok) throw new Error('Sem resposta');
+            } catch (error) {
+                Alert.alert('Sem conexão', 'Você será redirecionado para o modo offline.');
+                router.replace('./(offline)/painel');
+            }
+        };
+
+        checkConnection();
+    }, []);
+    // ⬆️ FIM DA INSERÇÃO
 
     async function handleSignIn(){     
         setLoading(true);
@@ -60,7 +76,7 @@ export default function Login() {
                     <Pressable style={styles.button} onPress={handleSignIn}>
                         <Text style={styles.buttonText}>
                             {loading ? 'Carregando...' : 'Entrar'}
-                            </Text>
+                        </Text>
                     </Pressable>
 
                     <Link href='/(auth)/signup/page' style={styles.link}>
@@ -130,12 +146,9 @@ const styles = StyleSheet.create({
     link: {
         marginTop: 16,
         textAlign: 'center',
-
-
     },
     forgotLink: {
         marginTop: 12,
         textAlign: 'center',
     }
-      
 });
