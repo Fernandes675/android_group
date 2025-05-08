@@ -15,7 +15,7 @@ export default function Login() {
     useEffect(() => {
         const checkConnection = async () => {
             try {
-                const response = await fetch('1231231.com', { method: 'HEAD' });
+                const response = await fetch('supabase.com', { method: 'HEAD' });
                 if (!response.ok) throw new Error('Sem resposta');
             } catch (error) {
                 Alert.alert('Sem conexão', 'Você será redirecionado para o modo offline.');
