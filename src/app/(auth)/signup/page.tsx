@@ -13,22 +13,26 @@ export default function Signup() {
     const [loading, setLoading] = useState(false);
 
     async function handleSignUp() {
-
         setLoading(true);
 
-        const { data, error } = await supabase.auth.signUp({
-            email: email,
-            password: password
-        })
+        try {
+            const { user, session, error } = await supabase.auth.signUp({
+                email,
+                password,
+            });
 
-        if(error){
-            Alert.alert('Error', error.message)
-            return;
+            if (error) {
+                Alert.alert('Erro', error.message);
+                return;
+            }
+
+            // Aqui você pode fazer algo com o usuário, se quiser
+            console.log('Usuário criado:', user);
+
+            router.replace('/');
+        } finally {
+            setLoading(false);
         }
-
-        setLoading(false);
-        router.replace('/')
-
     }
 
     return (
@@ -76,7 +80,7 @@ export default function Signup() {
                     <Pressable style={styles.button} onPress={handleSignUp}>
                         <Text style={styles.buttonText}>
                             {loading ? 'Carregando...' : 'Cadastrar'}
-                            </Text>
+                        </Text>
                     </Pressable>
                 </View>
             </View>
