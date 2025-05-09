@@ -1,21 +1,19 @@
 import { View, StyleSheet, Image, TextInput, Pressable, Text, ScrollView, Alert } from 'react-native';
 import colors from '@/constants/colors';
-import { Link } from 'expo-router';
-import { useState, useEffect } from 'react'; // ⬅️ useEffect adicionado aqui
+import { Link, router } from 'expo-router';
+import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import { router } from 'expo-router'
 
 export default function Login() {
-
-    const [email, setEmail] = useState ('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
-    // ⬇️ INSERÇÃO PARA VERIFICAR CONEXÃO COM SUPABASE
+    // Verifica conexão
     useEffect(() => {
         const checkConnection = async () => {
             try {
-                const response = await fetch('supabase.com', { method: 'HEAD' });
+                const response = await fetch('https://facebook.com', { method: 'HEAD' });
                 if (!response.ok) throw new Error('Sem resposta');
             } catch (error) {
                 Alert.alert('Sem conexão', 'Você será redirecionado para o modo offline.');
@@ -25,25 +23,23 @@ export default function Login() {
 
         checkConnection();
     }, []);
-    // ⬆️ FIM DA INSERÇÃO
 
-    async function handleSignIn(){     
+    async function handleSignIn() {
         setLoading(true);
 
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email: email,
-            password: password,
-        })
+        const { error } = await supabase.auth.signIn({
+            email,
+            password,
+        });
 
-        if(error){
-            Alert.alert('Error', error.message)
+        if (error) {
+            Alert.alert('Erro', error.message);
             setLoading(false);
             return;
         }
 
         setLoading(false);
-        router.replace('/(panel)/profile/page')
-
+        router.replace('/(panel)/profile/page');
     }
 
     return (
@@ -62,6 +58,8 @@ export default function Login() {
                         style={styles.input}
                         value={email}
                         onChangeText={setEmail}
+                        autoCapitalize="none"
+                        keyboardType="email-address"
                     />
 
                     <Text style={styles.label}>Senha</Text>
@@ -85,7 +83,6 @@ export default function Login() {
                     <Link href="/(auth)/forgot-password/page" style={styles.forgotLink}>
                         <Text>Esqueci minha senha</Text>
                     </Link>
-
                 </View>
             </View>
         </ScrollView>
