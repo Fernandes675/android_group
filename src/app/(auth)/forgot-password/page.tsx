@@ -13,7 +13,7 @@ export default function ForgotPassword() {
       return;
     }
 
-    const { error } = await supabase.auth.resetPasswordForEmail(email);
+    const { error } = await supabase.auth.api.resetPasswordForEmail(email);
 
     if (error) {
       Alert.alert('Erro', error.message);

@@ -1,13 +1,13 @@
-import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import colors from '@/constants/colors';
 
-export default function MenuScreen() {
+export default function CriarOrdemScreen() {
     return (
         <View style={styles.container}>
             {/* Botão de voltar */}
-            <Pressable style={styles.backButton} onPress={() => router.push('/')}>
+            <Pressable style={styles.backButton} onPress={() => router.back()}>
                 <Ionicons name="arrow-back" size={24} color={colors.white} />
             </Pressable>
 
@@ -18,21 +18,19 @@ export default function MenuScreen() {
                 resizeMode="contain"
             />
 
-            <Text style={styles.title}>Menu</Text>
+            <Text style={styles.title}>Ordem de serviço</Text>
 
-            {/* Botões */}
-            <Pressable
-                style={styles.menuButton}
-                onPress={() => router.push('/order/inicial')} // Ordem de serviço
-            >
-                <Text style={styles.menuButtonText}>Ordem de serviço</Text>
+            {/* Botões de ação */}
+            <Pressable style={styles.menuButton} onPress={() => router.push('/order/page')}>
+                <Text style={styles.menuButtonText}>Criar</Text>
             </Pressable>
 
-            <Pressable
-                style={styles.menuButton}
-                onPress={() => router.push('/user/page')} // ✅ Atualizar perfil
-            >
-                <Text style={styles.menuButtonText}>Atualizar perfil</Text>
+            <Pressable style={styles.menuButton} onPress={() => {}}>
+                <Text style={styles.menuButtonText}>Finalizar</Text>
+            </Pressable>
+
+            <Pressable style={styles.menuButton} onPress={() => {}}>
+                <Text style={styles.menuButtonText}>Consultar</Text>
             </Pressable>
         </View>
     );
