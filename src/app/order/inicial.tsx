@@ -1,11 +1,19 @@
 import { View, Text, Pressable, StyleSheet, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import colors from '@/constants/colors';
 
 export default function CriarOrdemScreen() {
     return (
         <View style={styles.container}>
+            
+            <Stack.Screen
+                name="(order)/inicial" 
+                options={{ headerShown: false }} 
+            /> 
+      
+            
+            
             {/* Botão de voltar */}
             <Pressable style={styles.backButton} onPress={() => router.back()}>
                 <Ionicons name="arrow-back" size={24} color={colors.white} />

@@ -16,7 +16,11 @@ export default function MainLayout(){
         name="(panel)/profile/page" 
         options={{ headerShown: false }} 
       /> 
-      
+
+       <Stack.Screen
+        name="(panel)/First/page" 
+        options={{ headerShown: false }} 
+      /> 
     </Stack>
   )
 }
