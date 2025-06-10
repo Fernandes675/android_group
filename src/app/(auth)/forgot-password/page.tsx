@@ -1,8 +1,9 @@
 import { View, Text, TextInput, Pressable, StyleSheet, Alert, ScrollView, Image } from 'react-native';
 import { useState } from 'react';
 import { supabase } from '../../../lib/supabase';
-import { router } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import colors from '@/constants/colors';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
@@ -24,8 +25,19 @@ export default function ForgotPassword() {
   }
 
   return (
+
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
+        
+        <Stack.Screen
+        name="(auth)/forgot-password/page" 
+        options={{ headerShown: false }} 
+        />
+
+         <Pressable style={styles.backButton} onPress={() => router.back()}>
+        <Ionicons name="arrow-back" size={24} color={colors.white} />
+            </Pressable>
+
         <Image
           source={require('../../../../assets/images/logo.png')}
           style={styles.logo}
@@ -109,4 +121,14 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center',
   },
+
+  backButton: {
+      position: 'absolute',
+      top: 40,
+      left: 20,
+      backgroundColor: colors.green,
+      padding: 10,
+      borderRadius: 50,
+      zIndex: 1,
+ },    
 });
