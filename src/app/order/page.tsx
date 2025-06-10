@@ -108,7 +108,7 @@ export default function MenuScreen() {
         data_ordem: '',
         codigo_ordem: '',
       });
-      setTimeout(() => router.replace('/order/inicial'), 500); // leve delay para a mensagem aparecer
+      setTimeout(() => router.replace('/order/inicial'), 500);
     }
   };
 

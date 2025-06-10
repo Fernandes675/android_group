@@ -1,14 +1,4 @@
-import {
-  View,
-  StyleSheet,
-  Image,
-  TextInput,
-  Pressable,
-  Text,
-  ScrollView,
-  SafeAreaView,
-  Alert,
-} from 'react-native';
+import {View,StyleSheet,Image,TextInput,Pressable,Text,ScrollView,SafeAreaView,Alert,} from 'react-native';
 import colors from '@/constants/colors';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';

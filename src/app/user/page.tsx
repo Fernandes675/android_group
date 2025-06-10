@@ -1,11 +1,19 @@
 import { View, Text, StyleSheet, Pressable, TextInput, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import colors from '@/constants/colors';
 
 export default function AtualizarPerfilScreen() {
     return (
+
         <View style={styles.container}>
+
+            {/* Escondedor de header */}
+            <Stack.Screen
+                name="(user)/page" 
+                options={{ headerShown: false }} 
+            />
+
             {/* Botão de voltar */}
             <Pressable style={styles.backButton} onPress={() => router.back()}>
                 <Ionicons name="arrow-back" size={24} color={colors.white} />
@@ -27,12 +35,12 @@ export default function AtualizarPerfilScreen() {
             />*/}
 
             {/* Campos */}
-            <TextInput placeholder="Nome*" style={styles.input} />
-            <TextInput placeholder="CPF*" style={styles.input} />
-            <TextInput placeholder="Matrícula*" style={styles.input} />
-            <TextInput placeholder="Telefone pessoal_" style={styles.input} />
-            <TextInput placeholder="Endereço residencial_" style={styles.input} />
-            <TextInput placeholder="CEP_" style={styles.input} />
+            <TextInput placeholder="Nome" style={styles.input} />
+            <TextInput placeholder="CPF" style={styles.input} />
+            <TextInput placeholder="Matrícula" style={styles.input} />
+            <TextInput placeholder="Telefone pessoal" style={styles.input} />
+            <TextInput placeholder="Endereço residencial" style={styles.input} />
+            <TextInput placeholder="CEP" style={styles.input} />
 
             {/* Botão Enviar */}
             <Pressable style={styles.sendButton} onPress={() => {/* enviar para Supabase */}}>
@@ -40,7 +48,9 @@ export default function AtualizarPerfilScreen() {
             </Pressable>
         </View>
     );
+    
 }
+
 
 const styles = StyleSheet.create({
     container: {

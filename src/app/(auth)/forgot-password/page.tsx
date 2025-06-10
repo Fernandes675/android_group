@@ -103,10 +103,10 @@ const styles = StyleSheet.create({
   },
 
   form: {
-          width: '85%',
-          backgroundColor: colors.gray,
-          borderRadius: 16,
-          padding: 20,
-          alignItems: 'center',
+    width: '85%',
+    backgroundColor: colors.gray,
+    borderRadius: 16,
+    padding: 20,
+    alignItems: 'center',
   },
 });

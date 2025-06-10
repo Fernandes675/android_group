@@ -30,7 +30,7 @@ export default function MenuScreen() {
 
             <Pressable
                 style={styles.menuButton}
-                onPress={() => router.push('/user/page')} // ✅ Atualizar perfil
+                onPress={() => router.push('/user/page')} // Atualizar perfil
             >
                 <Text style={styles.menuButtonText}>Atualizar perfil</Text>
             </Pressable>

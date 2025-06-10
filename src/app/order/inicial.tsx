@@ -7,13 +7,12 @@ export default function CriarOrdemScreen() {
     return (
         <View style={styles.container}>
             
+            {/* Escondedor de header */}
             <Stack.Screen
-                name="(order)/inicial" 
-                options={{ headerShown: false }} 
+              name="(order)/inicial" 
+              options={{ headerShown: false }} 
             /> 
       
-            
-            
             {/* Botão de voltar */}
             <Pressable style={styles.backButton} onPress={() => router.back()}>
                 <Ionicons name="arrow-back" size={24} color={colors.white} />
